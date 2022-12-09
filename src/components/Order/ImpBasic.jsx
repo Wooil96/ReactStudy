@@ -44,7 +44,9 @@ function ImpBasic() {
     )
   }
 
-  const [basicInputs, setBasicInputs] = useState({
+
+
+  const [basicValues, setBasicValues] = useState({
     billto: '',
     mbl: '',
     housebl: '',
@@ -61,6 +63,15 @@ function ImpBasic() {
     wms: '',
   })
 
+  const handleChange = (e) => {
+    setBasicValues(e.target.value)
+    console.log(e.target.value)
+    setBasicValues({
+      ...basicValues,
+      [e.target.className]: e.target.value,
+    })
+  }
+
   return (
     <table>
       <tbody>
@@ -72,13 +83,13 @@ function ImpBasic() {
         </tr>
         <tr>
           <td colSpan={2}>
-            <input type="text" name="ordBillto" />
+            <input type="text" className="ordBillto"  onChange={handleChange}/>
           </td>
           <td colSpan={2}>
-            <input type="text" name="ordMblNum" />
+            <input type="text" className="ordMblNum" />
           </td>
           <td colSpan={2}>
-            <input type="text" name="ordHouseblNum" />
+            <input type="text" className="ordHouseblNum" />
           </td>
         </tr>
         {/* Second Row */}
@@ -89,13 +100,13 @@ function ImpBasic() {
         </tr>
         <tr>
           <td colSpan={2}>
-            <input type="text" name="ordRefNum" />
+            <input type="text" className="ordRefNum" />
           </td>
           <td colSpan={2}>
-            <input type="text" name="ordPoNum" />
+            <input type="text" className="ordPoNum" />
           </td>
           <td colSpan={2}>
-            <input type="text" name="ordDeliveryNum" />
+            <input type="text" className="ordDeliveryNum" />
           </td>
         </tr>
         {/* Third Row */}
@@ -110,7 +121,7 @@ function ImpBasic() {
         </tr>
         <tr>
           <td colSpan={2}>
-            <input type="text" name="ordContNum" />
+            <input type="text" className="ordContNum" />
           </td>
           <td>
             <SelectBox options={CONTOPTIONS}></SelectBox>
@@ -122,7 +133,7 @@ function ImpBasic() {
           <SelectBox options={SSLOPTIONS}></SelectBox>
           </td>
           <td>
-            <input type="text" name="ordVessel" />
+            <input type="text" className="ordVessel" />
           </td>
         </tr>
 
@@ -135,13 +146,13 @@ function ImpBasic() {
         </tr>
         <tr>
           <td colSpan={2}>
-            <input type="text" name="ordContNum" />
+            <input type="text" className="ordContNum" />
           </td>
           <td>
-            <input type="text" name="ordSize" />
+            <input type="text" className="ordSize" />
           </td>
           <td>
-            <input type="text" name="ordType" />
+            <input type="text" className="ordType" />
           </td>
         </tr>
       </tbody>
