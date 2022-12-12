@@ -5,6 +5,8 @@ import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import OrderImpReg from './pages/OrderImpReg'
 import OrderImpShuttle from './pages/OrderImpShuttle'
+import PostView from './pages/PostView'
+import FormTest from './components/Order/FormTest'
 
 function App() {
   return (
@@ -15,8 +17,10 @@ function App() {
             <Link to="/">Home</Link> {' | '}
             <Link to="/importReg">IMP-REG</Link>{' | '}
             <Link to="/importshu">IMP-SHUTTLE</Link>{' | '}
-            {/* <Link to="/expenses">Expenses</Link> {' | '}
-          <Link to="/postMain">PastMain</Link> */}
+            <Link to="/postview">TEST</Link> {' | '}
+            <Link to="/formtest">FormTest</Link> {' | '}
+
+           
           </nav>
         </h1>
       </div>
@@ -26,6 +30,9 @@ function App() {
 
           <Route path="/importReg" element={<OrderImpReg />} />
           <Route path="/importshu" element={<OrderImpShuttle />} />
+          <Route path="/postview" element={<PostView />} />
+          <Route path="/formtest" element={<FormTest />} />
+
         </Routes>
       </div>
     </div>
