@@ -60,6 +60,7 @@ function OrderImpReg() {
 
       <div>
         <button onClick={handleCreate}>{'Save&Copy'}</button>
+        <button onClick={handleCreate}>{'Save&Reset'}</button>
       </div>
     </div>
   )

@@ -1,39 +1,41 @@
 import React from 'react'
-import { useState } from 'react';
+import { useEffect } from 'react'
+import { useState } from 'react'
 
-function TestInput({onCreate}) {
+// export let test = 0
+
+ function TestInput(props) {
   // const handleChange = (e) => {
   //   props.getData(e.target.value)
   //   console.log(e.target.value)
   // }
 
   const [state, setState] = useState({
-    billto:"",
-    mbl: "",
+    billto: '',
+    mbl: '',
   })
 
+  const [basicValues, setBasicValues] = useState({
+    billto: '',
+    mbl: '',
+  })
+  useEffect(() => {
+    props.onChange(state)
 
-  // const [basicValues, setBasicValues] = useState({
-  //   billto: '',
-  //   mbl: '',
-  // })
+  }, [state.billto, state.mbl])
 
 
-  const handleChangeState = (e) => {
+  const onChange = (e) => {
     setState({
       ...state, // 기존의 input 객체를 복사한 뒤
-      [e.target.className]: e.target.value // name 키를 가진 값을 value 로 설정
+      [e.target.className]: e.target.value, // name 키를 가진 값을 value 로 설정
     });
-    onCreate(state.billto, state.mbl);
-    console.log("e.target.value : " + e.target.value)
-    console.log("state.billto : " + state.billto)
-  };
+  }
 
   const onClick = () => {
+    console.log('Component onClick : ' + JSON.stringify(state))
     console.log(state.billto)
   }
-  
-
 
   return (
     <div className="App">
@@ -41,7 +43,7 @@ function TestInput({onCreate}) {
         <input
           type={'text'}
           className="billto"
-          onChange={handleChangeState}
+          onChange={onChange}
           value={state.billto}
           placeholder="BILLTO"
         />
@@ -49,8 +51,8 @@ function TestInput({onCreate}) {
           type={'text'}
           className="mbl"
           id="mbl"
-          onChange={handleChangeState}
-          value={state.billto}
+          onChange={onChange}
+          value={state.mbl}
           placeholder="MBL"
         />
       </form>

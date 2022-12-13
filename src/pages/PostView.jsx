@@ -8,22 +8,27 @@ import TestInput from '../components/Order/TestInput';
 function PostView() {
 
     // const [testChar, setTestChar] = useState("");
-   
 
-    // const [basicValues, setBasicValues] = useState({
-    //     billto: '',
-    //     mbl: '',
-    //   })
+    const [basicValues, setBasicValues] = useState({
+        billto: '',
+        mbl: '',
+      })
 
     const [data, setData] = useState([]);
 
-    const onCreate = (billto, mbl) => {
-        const newItem = {
-            billto,
-            mbl
-        }
-        console.log("On Create new Item : " + JSON.stringify(newItem))
-        setData([...data, newItem])
+    // const onCreate = (billto, mbl) => {
+    //     const newItem = {
+    //         billto,
+    //         mbl
+    //     }
+    //     console.log("On Create new Item : " + JSON.stringify(newItem))
+    //     setData([...data, newItem])
+    // }
+
+    const onCreate = (state) => {
+        
+        console.log("On Create new Item : " + JSON.stringify(state))
+        setData([...data, state])
     }
 
     // constructor(props)
@@ -33,7 +38,7 @@ function PostView() {
     // }
 
     const onClick = () => {
-        console.log("onclick" + " " + JSON.stringify(data))
+        console.log("onclick" + " " + JSON.stringify(basicValues))
     }
     // const handleChange = (e) => {
     //     setBasicValues(e.target.value)
@@ -47,9 +52,9 @@ function PostView() {
 
     
     return (
-        <div>
+        <div>f
             <TestInput 
-             onCreate={onCreate}/>    
+             onCreate={onCreate} onChange={value =>  setBasicValues({...basicValues, ...value})} />   
 
             {/* <input className='inputtest' value={basicValues} disabled /> */}
 
