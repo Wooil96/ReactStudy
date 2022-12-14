@@ -22,7 +22,7 @@ import { useState } from 'react'
   useEffect(() => {
     props.onChange(state)
 
-  }, [state.billto, state.mbl])
+  }, [state])
 
 
   const onChange = (e) => {

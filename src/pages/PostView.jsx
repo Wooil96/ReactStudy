@@ -38,8 +38,9 @@ function PostView() {
     // }
 
     const onClick = () => {
-        console.log("onclick" + " " + JSON.stringify(basicValues))
-        console.log(basicValues.billto)
+        console.log("onclick" + " " + JSON.stringify(data))
+        console.log(data.billto)
+        console.log(data.mbl)
     }
     // const handleChange = (e) => {
     //     setBasicValues(e.target.value)
@@ -55,7 +56,7 @@ function PostView() {
     return (
         <div>f
             <TestInput 
-             onCreate={onCreate} onChange={value =>  setBasicValues({...basicValues, ...value})} />   
+              onChange={value =>  setData({...data, ...value})} />   
 
             {/* <input className='inputtest' value={basicValues} disabled /> */}
 
