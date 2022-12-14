@@ -39,6 +39,7 @@ function PostView() {
 
     const onClick = () => {
         console.log("onclick" + " " + JSON.stringify(basicValues))
+        console.log(basicValues.billto)
     }
     // const handleChange = (e) => {
     //     setBasicValues(e.target.value)
