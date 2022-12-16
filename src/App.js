@@ -7,6 +7,7 @@ import OrderImpReg from './pages/OrderImpReg'
 import OrderImpShuttle from './pages/OrderImpShuttle'
 import PostView from './pages/PostView'
 import FormTest from './components/Order/FormTest'
+import StyleTest from './pages/StyleTest'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Link to="/importshu">IMP-SHUTTLE</Link>{' | '}
             <Link to="/postview">TEST</Link> {' | '}
             <Link to="/formtest">FormTest</Link> {' | '}
+            <Link to="/styletest">StyleTest</Link>
 
            
           </nav>
@@ -32,6 +34,8 @@ function App() {
           <Route path="/importshu" element={<OrderImpShuttle />} />
           <Route path="/postview" element={<PostView />} />
           <Route path="/formtest" element={<FormTest />} />
+          <Route path="/styletest" element={<StyleTest />} />
+
 
         </Routes>
       </div>

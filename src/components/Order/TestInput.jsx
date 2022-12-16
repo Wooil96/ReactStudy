@@ -1,10 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { Form, Input, Button } from 'antd'
 
 // export let test = 0
 
- function TestInput(props) {
+function TestInput(props) {
   // const handleChange = (e) => {
   //   props.getData(e.target.value)
   //   console.log(e.target.value)
@@ -15,21 +16,24 @@ import { useState } from 'react'
     mbl: '',
   })
 
-  const [basicValues, setBasicValues] = useState({
-    billto: '',
-    mbl: '',
-  })
+  const onFinish = (values) => {
+    console.log('Success:', values)
+  }
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo)
+  }
+
   useEffect(() => {
     props.onChange(state)
-
   }, [state])
 
-
   const onChange = (e) => {
+    console.log(e.target.id)
+    console.log()
     setState({
       ...state, // 기존의 input 객체를 복사한 뒤
-      [e.target.className]: e.target.value, // name 키를 가진 값을 value 로 설정
-    });
+      [e.target.id]: e.target.value, // name 키를 가진 값을 value 로 설정
+    })
   }
 
   const onClick = () => {
@@ -39,24 +43,34 @@ import { useState } from 'react'
 
   return (
     <div className="App">
-      <form>
-        <input
+     
+        <Form.Item
+          name={'billto'}
+          rules={[
+            {
+              required: true,
+              message: 'Please input BILLTO',
+            },
+          ]}
+        >
+          <Input
+            placeholder="BILLTO"
+            onChange={onChange}
+            id="billto"
+            value={state.billto}
+          />
+        </Form.Item>
+        {/* <Input
           type={'text'}
-          className="billto"
-          onChange={onChange}
-          value={state.billto}
-          placeholder="BILLTO"
-        />
-        <input
-          type={'text'}
-          className="mbl"
           id="mbl"
           onChange={onChange}
           value={state.mbl}
           placeholder="MBL"
-        />
-      </form>
-      <button onClick={onClick}>Button</button>
+          required
+        /> */}
+        <Form.Item>
+          <Button htmlType='submit'>Button</Button>
+        </Form.Item>
     </div>
   )
 }

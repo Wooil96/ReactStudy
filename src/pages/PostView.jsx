@@ -1,70 +1,70 @@
-import { useSlotProps } from '@mui/base';
-import { mobileStepperClasses } from '@mui/material';
-import { propsToAttrMap } from '@vue/shared';
-import React from 'react';
-import { useState } from 'react';
-import TestInput from '../components/Order/TestInput';
+import { useSlotProps } from '@mui/base'
+import { mobileStepperClasses } from '@mui/material'
+import { propsToAttrMap } from '@vue/shared'
+import { Button, Form } from 'antd'
+import React from 'react'
+import { useState } from 'react'
+import TestInput from '../components/Order/TestInput'
 
 function PostView() {
+  // const [testChar, setTestChar] = useState("");
 
-    // const [testChar, setTestChar] = useState("");
+  const [basicValues, setBasicValues] = useState({
+    billto: '',
+    mbl: '',
+  })
 
-    const [basicValues, setBasicValues] = useState({
-        billto: '',
-        mbl: '',
-      })
+  const [data, setData] = useState([])
 
-    const [data, setData] = useState([]);
+  // const onCreate = (billto, mbl) => {
+  //     const newItem = {
+  //         billto,
+  //         mbl
+  //     }
+  //     console.log("On Create new Item : " + JSON.stringify(newItem))
+  //     setData([...data, newItem])
+  // }
 
-    // const onCreate = (billto, mbl) => {
-    //     const newItem = {
-    //         billto,
-    //         mbl
-    //     }
-    //     console.log("On Create new Item : " + JSON.stringify(newItem))
-    //     setData([...data, newItem])
-    // }
+  const onCreate = (state) => {
+    console.log('On Create new Item : ' + JSON.stringify(state))
+    setData([...data, state])
+  }
 
-    const onCreate = (state) => {
-        
-        console.log("On Create new Item : " + JSON.stringify(state))
-        setData([...data, state])
-    }
+  // constructor(props)
 
-    // constructor(props)
+  //   const getData = (char) => {
+  //     console.log("Parent GetData" + char)
+  // }
 
-    //   const getData = (char) => {
-    //     console.log("Parent GetData" + char)
-    // }
+  const onClick = () => {
+    console.log('onclick' + ' ' + JSON.stringify(data))
+    console.log(data.billto)
+    console.log(data.mbl)
+  }
+  // const handleChange = (e) => {
+  //     setBasicValues(e.target.value)
+  //     console.log(e.target.value)
+  //     setBasicValues({
+  //       ...basicValues,
+  //       [e.target.className]: e.target.value,
+  //     })
+  //   }
 
-    const onClick = () => {
-        console.log("onclick" + " " + JSON.stringify(data))
-        console.log(data.billto)
-        console.log(data.mbl)
-    }
-    // const handleChange = (e) => {
-    //     setBasicValues(e.target.value)
-    //     console.log(e.target.value)
-    //     setBasicValues({
-    //       ...basicValues,
-    //       [e.target.className]: e.target.value,
-    //     })
-    //   }
+  return (
+    <div>
+      <Form>
+        <TestInput onChange={(value) => setData({ ...data, ...value })} />
 
+        {/* <input className='inputtest' value={basicValues} disabled /> */}
 
-    
-    return (
-        <div>f
-            <TestInput 
-              onChange={value =>  setData({...data, ...value})} />   
-
-            {/* <input className='inputtest' value={basicValues} disabled /> */}
-
-            <button onClick={onClick}>{'Save&Copy'}</button>
-
-        </div>
-
-);
+        <Form.Item>
+          <Button htmlType="submit" onClick={onClick}>
+            {'Save&Copy'}
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  )
 }
 
-export default PostView;
+export default PostView
